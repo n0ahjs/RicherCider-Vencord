@@ -104,7 +104,11 @@ export default definePlugin({
     patchActivity(activity: any) {
         if (appIds.includes(activity.application_id)) {
             activity.type = settings.store.typeChoice; 
-            activity.name = settings.store.appName;
+            if (settings.store.appName) {
+                activity.name = settings.store.appName;
+            } else {
+                activity.name = "Cider"
+            }
         }
     },
 });
